@@ -127,7 +127,7 @@ reapPreviousRun();
 
 const child = spawn("pnpm", ["dev"], {
   cwd: repoRoot,
-  stdio: "inherit",
+  stdio: process.env.VERBOSE ? "inherit" : "ignore",
   // Its own process group, so a stray signal to this wrapper's group cannot
   // take the tree down half-way behind our back.
   detached: !isWindows,
